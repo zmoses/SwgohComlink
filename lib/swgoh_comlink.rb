@@ -1,39 +1,35 @@
 # frozen_string_literal: true
 
-require 'openssl'
-require 'digest'
-require 'json'
-require 'net/http'
-require 'uri'
+require_relative 'comlink_api_request'
 
 require 'pry'
 
 # Base class for the gem, a wrapper for Comlink
 # See https://github.com/swgoh-utils/swgoh-comlink for more info on Comlink
 class SwgohComlink
-  attr_accessor :hmac_enabled, :comlink_url
 
   def initialize(comlink_url, keys = {})
-    @comlink_url = comlink_url.start_with?('http') ? comlink_url : "https://#{comlink_url}"
-    @hmac_enabled = false
-    return if keys.empty?
-
-    @secret_key = keys['secret_key'] || keys[:secret_key]
-    @access_key = keys['access_key'] || keys[:access_key]
-
-    raise ArgumentError, 'Secret key missing' unless @secret_key
-    raise ArgumentError, 'Access key missing' unless @access_key
-
-    @hmac_enabled = true
+    @api_requester = ComlinkApiRequest.new(comlink_url, keys)
   end
 
   def enums
-    path = '/enums'
-    uri = URI.parse("#{@comlink_url}#{path}")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(uri.request_uri)
+    JSON.parse(@api_requester.get('/enums'))
+  end
 
-    JSON.parse(http.request(request).body)
+  def player_data(player_id, enums = false)
+    body = {
+      payload: format_player_id_hash(player_id),
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/player', body.to_json))
+  end
+
+  private
+
+  def format_player_id_hash(player_id_string)
+    player_id = player_id_string.dup
+    player_id.gsub!('-', '') if player_id.length == 11
+    player_id.length == 9 ? { allyCode: player_id } : { playerID: player_id }
   end
 end

@@ -5,6 +5,10 @@ class FakeComlinkServer < Sinatra::Base
     json_response 200, 'enums.json'
   end
 
+  post '/player' do
+    json_response 200, 'player.json'
+  end
+
   private
 
   def json_response(response_code, file_name)
