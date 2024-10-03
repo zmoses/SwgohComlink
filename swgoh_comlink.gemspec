@@ -10,4 +10,6 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 2.7.0'
   s.add_development_dependency 'rspec'
+  s.add_development_dependency 'sinatra'
+  s.add_development_dependency 'webmock'
 end

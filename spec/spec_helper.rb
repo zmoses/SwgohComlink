@@ -15,6 +15,10 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'swgoh_comlink'
+require 'webmock/rspec'
+require_relative 'support/fake_comlink_server'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -29,6 +33,10 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+
+    config.before(:each) do
+      stub_request(:any, /swgohcomlink.com/).to_rack(FakeComlinkServer)
+    end
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
