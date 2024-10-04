@@ -12,11 +12,17 @@ describe SwgohComlink do
     end
   end
 
-  describe '#player_data' do
+  describe '#player' do
     it 'can retrieve player data' do
-      expect(comlink.player_data('123456789')).to have_key('rosterUnit')
+      expect(comlink.player('123456789')).to have_key('rosterUnit')
     end
   end
+
+  describe '#metadata' do
+  it 'can retrieve player data' do
+    expect(comlink.metadata({platform: 'Android'}, true)).to have_key('config')
+  end
+end
 
   describe '#format_player_id_hash' do
     it 'can handle player id and ally code params' do
@@ -25,4 +31,17 @@ describe SwgohComlink do
       expect(comlink.send(:format_player_id_hash, 'abcdef123456789')).to eq({ playerID: 'abcdef123456789' })
     end
   end
+
+  describe '#verify_client_specs' do
+  it 'can handle any given client_specs' do
+    example_client_specs = {
+      platform: 'Android',
+      "bundle_id" => 'com.sw',
+      externalVersion: '1.2.3',
+      i_do_not_belong: 'hello'
+    }
+
+    expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+  end
+end
 end
