@@ -19,8 +19,14 @@ describe SwgohComlink do
   end
 
   describe '#metadata' do
-  it 'can retrieve player data' do
-    expect(comlink.metadata({platform: 'Android'}, true)).to have_key('config')
+    it 'can retrieve metadata' do
+      expect(comlink.metadata({platform: 'Android'}, true)).to have_key('config')
+    end
+  end
+
+  describe '#localization' do
+  it 'can retrieve localization info' do
+    expect(comlink.localization("aEoiQSV5QHOy0fysbrX8RA:ENG_US", true)).to have_key('Loc_ENG_US.txt')
   end
 end
 

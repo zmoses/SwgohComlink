@@ -1,16 +1,12 @@
 require 'sinatra/base'
 
 class FakeComlinkServer < Sinatra::Base
-  get '/enums' do
-    json_response 200, 'enums.json'
+  get '/:route' do
+    json_response 200, "#{params['route']}.json"
   end
 
-  post '/player' do
-    json_response 200, 'player.json'
-  end
-
-  post '/metadata' do
-    json_response 200, 'metadata.json'
+  post '/:route' do
+    json_response 200, "#{params['route']}.json"
   end
 
   private

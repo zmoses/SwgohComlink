@@ -26,6 +26,18 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/player', body.to_json))
   end
 
+  def localization(id, unzip = false, enums = false)
+    body = {
+      payload: {
+        id: id
+      },
+      unzip: unzip,
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/localization', body.to_json))
+  end
+
   def metadata(client_specs = {}, enums = false)
     body = {}
     body['payload'] = { "clientSpecs" => verify_client_specs(client_specs) } unless client_specs.empty?
