@@ -33,15 +33,31 @@ end
   end
 
   describe '#verify_client_specs' do
-  it 'can handle any given client_specs' do
-    example_client_specs = {
-      platform: 'Android',
-      "bundle_id" => 'com.sw',
-      externalVersion: '1.2.3',
-      i_do_not_belong: 'hello'
-    }
+    it 'can handle any unknown client_specs keys' do
+      example_client_specs = {
+        platform: 'Android',
+        i_do_not_belong: 'hello'
+      }
 
-    expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android' })
+    end
+
+    it 'can handle symbols and strings as keys' do
+      example_client_specs = {
+        platform: 'Android',
+        "bundleId" => 'com.sw'
+      }
+
+      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw' })
+    end
+
+    it 'can handle snake and camel case' do
+      example_client_specs = {
+        bundle_id:  'com.sw',
+        externalVersion: '1.2.3'
+      }
+
+      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+    end
   end
-end
 end
