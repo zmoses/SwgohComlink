@@ -12,12 +12,6 @@ describe SwgohComlink do
     end
   end
 
-  describe '#player' do
-    it 'can retrieve player data' do
-      expect(comlink.player('123456789')).to have_key('rosterUnit')
-    end
-  end
-
   describe '#metadata' do
     it 'can retrieve metadata' do
       expect(comlink.metadata({platform: 'Android'}, true)).to have_key('config')
@@ -25,10 +19,22 @@ describe SwgohComlink do
   end
 
   describe '#localization' do
-  it 'can retrieve localization info' do
-    expect(comlink.localization("aEoiQSV5QHOy0fysbrX8RA:ENG_US", true)).to have_key('Loc_ENG_US.txt')
+    it 'can retrieve localization info' do
+      expect(comlink.localization("aEoiQSV5QHOy0fysbrX8RA:ENG_US", true)).to have_key('Loc_ENG_US.txt')
+    end
   end
-end
+
+  describe '#data' do
+    it 'can retrieve data info' do
+      expect(comlink.data("0.35.3:eD97HdfRTOG8C8c8qlajiQ", true)).to have_key('battleEnvironments')
+    end
+  end
+
+  describe '#player' do
+    it 'can retrieve player data' do
+      expect(comlink.player('123456789')).to have_key('rosterUnit')
+    end
+  end
 
   describe '#format_player_id_hash' do
     it 'can handle player id and ally code params' do

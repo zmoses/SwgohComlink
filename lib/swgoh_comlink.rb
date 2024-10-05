@@ -8,22 +8,12 @@ require 'pry'
 # Base class for the gem, a wrapper for Comlink
 # See https://github.com/swgoh-utils/swgoh-comlink for more info on Comlink
 class SwgohComlink
-
   def initialize(comlink_url, keys = {})
     @api_requester = ComlinkApiRequest.new(comlink_url, keys)
   end
 
   def enums
     JSON.parse(@api_requester.get('/enums'))
-  end
-
-  def player(player_id, enums = false)
-    body = {
-      payload: format_player_id_hash(player_id),
-      enums: enums
-    }
-
-    JSON.parse(@api_requester.post('/player', body.to_json))
   end
 
   def localization(id, unzip = false, enums = false)
@@ -44,6 +34,30 @@ class SwgohComlink
     body['enums'] = false
 
     JSON.parse(@api_requester.post('/metadata', body.to_json))
+  end
+
+  def data(version, include_pve_units = true, request_segment = 0, enums = false)
+    raise ArgumentError, 'Request segment must be between 0 and 4' unless (0..4).include?(request_segment)
+
+    body = {
+      "payload": {
+          "version": version,
+          "includePveUnits": include_pve_units,
+          "requestSegment": request_segment
+      },
+      "enums": enums
+    }
+
+    JSON.parse(@api_requester.post('/data', body.to_json))
+  end
+
+  def player(player_id, enums = false)
+    body = {
+      payload: format_player_id_hash(player_id),
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/player', body.to_json))
   end
 
   private
