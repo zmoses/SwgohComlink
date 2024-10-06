@@ -29,7 +29,7 @@ describe SwgohComlink do
       expect(comlink.data("0.35.3:eD97HdfRTOG8C8c8qlajiQ", true)).to have_key('battleEnvironments')
     end
 
-    it 'requires filterType to be 4 or 5' do
+    it 'requires requestSegment to be between 0 and 4' do
       expect { comlink.data("0.35.3:eD97HdfRTOG8C8c8qlajiQ", true, 23) }.to raise_error(ArgumentError, 'Request segment must be between 0 and 4')
     end
   end
@@ -65,6 +65,55 @@ describe SwgohComlink do
   describe '#get_events' do
     it 'can retrieve event data' do
       expect(comlink.get_events).to have_key('gameEvent')
+    end
+  end
+
+  describe '#get_leaderboard' do
+    it 'can retrieve GAC top 50 leaderboard data' do
+      payload = {
+        leaderboardType: 6,
+        league: 100,
+        division: 25
+      }
+      expect(comlink.get_leaderboard(payload)).to have_key('playerStatus')
+    end
+
+
+    it 'can retrieve GAC bracket leaderboard data' do
+      payload = {
+        leaderboardType: 4,
+        eventInstanceId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000",
+        groupId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000:KYBER:100"
+      }
+      expect(comlink.get_leaderboard(payload)).to have_key('playerStatus')
+    end
+
+    it 'errors when invalid leaderboardType' do
+      payload = {
+        leaderboardType: 505,
+        eventInstanceId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000",
+        groupId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000:KYBER:100"
+      }
+      expect { comlink.get_leaderboard(payload) }.to raise_error(ArgumentError, 'leaderboardType must be 4 or 6')
+    end
+
+    it 'errors when params do not match leaderboardType 6' do
+      payload = {
+        leaderboardType: 6,
+        eventInstanceId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000",
+        groupId: "CHAMPIONSHIPS_GRAND_ARENA_GA2_EVENT_SEASON_36:O1676412000000:KYBER:100"
+      }
+      expect { comlink.get_leaderboard(payload) }.to raise_error(ArgumentError, 'league must be in [20, 40, 60, 80, 100]')
+    end
+
+    it 'errors when params do not match leaderboardType 4' do
+      payload = {
+        leaderboardType: 4,
+        league: 100,
+        division: 25
+      }
+
+      expect { comlink.get_leaderboard(payload) }.to raise_error(ArgumentError, 'eventInstanceId must be present')
     end
   end
 
@@ -116,23 +165,44 @@ describe SwgohComlink do
   end
 
   describe '#body_validation' do
-    it 'throws an error for an invalid body' do
+    it 'errors when an invalid body' do
       body = { this_should_be_1: 0 }
-      requirements = [ { validation: [ 1 ], error_message: 'I should be 1', path: [:i_should_be_1] } ]
+      requirements = [ { validation: [ 1 ], error_message: 'This should be 1', path: [:this_should_be_1] } ]
 
-      expect { comlink.send(:body_validation, body, requirements) }.to raise_error(ArgumentError, 'I should be 1')
+      expect { comlink.send(:body_validation, body, requirements) }.to raise_error(ArgumentError, 'This should be 1')
     end
 
-    it 'throws an error for an invalid nested key' do
+    it 'returns true if validation passes' do
+      body = { this_should_be_1: 1 }
+      requirements = [ { validation: [ 1 ], error_message: 'This should be 1', path: [:this_should_be_1] } ]
+
+      expect(comlink.send(:body_validation, body, requirements)).to eq(true)
+    end
+
+    it 'errors when an invalid nested key' do
       body = { i_am_valid: { but_i_am_not: 0 } }
       requirements = [ { validation: [ 1 ], error_message: 'I should be 1', path: [:i_am_valid, :but_i_am_not] } ]
 
       expect { comlink.send(:body_validation, body, requirements) }.to raise_error(ArgumentError, 'I should be 1')
     end
 
-    it 'returns no error if validation passes' do
-      body = { this_should_be_1: 1 }
-      requirements = [ { validation: [ 1 ], error_message: 'This should be 1', path: [:this_should_be_1] } ]
+    it 'returns true on a successful nested key check' do
+      body = { i_am_valid: { and_i_am_too: 1 } }
+      requirements = [ { validation: [ 1 ], error_message: 'I should be 1', path: [:i_am_valid, :and_i_am_too] } ]
+
+      expect(comlink.send(:body_validation, body, requirements)).to eq(true)
+    end
+
+    it 'returns true when key does not exist and not required' do
+      body = { i_am_valid: true }
+      requirements = [ { validation: [ 20 ], error_message: 'I should be 20', path: [:i_am_also_valid] } ]
+
+      expect(comlink.send(:body_validation, body, requirements)).to eq(true)
+    end
+
+    it 'returns true when just required with no validation' do
+      body = { i_am_required: true }
+      requirements = [ { error_message: 'I am required', path: [:i_am_required], required: true } ]
 
       expect(comlink.send(:body_validation, body, requirements)).to eq(true)
     end

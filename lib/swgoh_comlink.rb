@@ -88,7 +88,7 @@ class SwgohComlink
     body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
     body[:enums] = enums
 
-    body_validation(body, [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType] } ])
+    body_validation(body, [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType], required: true } ])
 
     JSON.parse(@api_requester.post('/getGuilds', body.to_json))
   end
@@ -99,6 +99,31 @@ class SwgohComlink
     }
 
     JSON.parse(@api_requester.post('/getEvents', body.to_json))
+  end
+
+  def get_leaderboard(payload, enums = false)
+    body_validation(payload, [ { validation: [4, 6], error_message: 'leaderboardType must be 4 or 6', path: [:leaderboardType] } ])
+
+    if payload[:leaderboardType] == 4 || payload[:leaderboard_type] == 4
+      payload = verify_parameters(payload, ['leaderboardType', 'eventInstanceId', 'groupId'])
+      body_validation(payload, [
+        { error_message: 'eventInstanceId must be present', path: [:eventInstanceId], required: true },
+        { error_message: 'groupId must be present', path: [:groupId], required: true }
+      ])
+    else
+      payload = verify_parameters(payload, ['leaderboardType', 'league', 'division'])
+      body_validation(payload, [
+        { validation: [20, 40, 60, 80, 100], error_message: 'league must be in [20, 40, 60, 80, 100]', path: [:league], required: true },
+        { validation: [5, 10, 15, 20, 25], error_message: 'division must be in [5, 10, 15, 20, 25]', path: [:division], required: true }
+      ])
+    end
+
+    body = {
+      payload: payload,
+      enums: false
+    }
+
+    JSON.parse(@api_requester.post('/getLeaderboard', body.to_json))
   end
 
   private
@@ -123,7 +148,10 @@ class SwgohComlink
   def body_validation(body, requirements)
     requirements.each do |req_set|
       value = body.dig(*req_set[:path])
-      raise ArgumentError, req_set[:error_message] unless req_set[:validation].include?(value)
+      next if !value && !req_set[:required]
+      next if value && (!req_set[:validation] || req_set[:validation].include?(value))
+
+      raise ArgumentError, req_set[:error_message]
     end
 
     true
