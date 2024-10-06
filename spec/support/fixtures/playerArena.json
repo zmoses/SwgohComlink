@@ -1,0 +1,364 @@
+{
+  "pvpProfile": [
+    {
+      "tab": 1,
+      "rank": 133,
+      "squad": {
+        "cell": [
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "V4JA9QU4QBWGS3E7W0EByQ",
+            "unitDefId": "JEDIMASTERKENOBI:SEVEN_STAR",
+            "cellIndex": 0,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 2,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "aZLNCe4tTU20-OxPEmutXA",
+            "unitDefId": "GENERALKENOBI:SEVEN_STAR",
+            "cellIndex": 1,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "6641Ou0kSg6Eb36rVLYo4A",
+            "unitDefId": "COMMANDERAHSOKA:SEVEN_STAR",
+            "cellIndex": 2,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "VlMygQz-TLaGU-odCMlaKA",
+            "unitDefId": "PADMEAMIDALA:SEVEN_STAR",
+            "cellIndex": 3,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "Gxamo2bxTSKmXe1wuljHRA",
+            "unitDefId": "AHSOKATANO:SEVEN_STAR",
+            "cellIndex": 4,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          }
+        ],
+        "targetingTactic": 1,
+        "squadType": 5,
+        "targetingSetId": "",
+        "expireTime": "0",
+        "lastSaveTime": "1728141560000",
+        "supportInheritFromDefinitionId": "",
+        "datacron": {
+          "tag": [
+
+          ],
+          "affix": [
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 55,
+              "statValue": "7024575",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 3,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 49,
+              "statValue": "47781678",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 3,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+                "lightside"
+              ],
+              "targetRule": "target_datacron_lightside",
+              "abilityId": "datacron_alignment_generic_018",
+              "statType": 1,
+              "statValue": "0",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 3,
+              "scopeIcon": "tex.datacronui_affix_darkside"
+            },
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 56,
+              "statValue": "19890149",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 5,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 55,
+              "statValue": "11863063",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 5,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+                "lightside",
+                "darkside",
+                "support"
+              ],
+              "targetRule": "target_datacron_support",
+              "abilityId": "datacron_faction_generic_035",
+              "statType": 1,
+              "statValue": "0",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 5,
+              "scopeIcon": "tex.datacronui_affix_support"
+            },
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 49,
+              "statValue": "87349324",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 5,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+
+              ],
+              "targetRule": "",
+              "abilityId": "",
+              "statType": 32,
+              "statValue": "20861030",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 5,
+              "scopeIcon": ""
+            },
+            {
+              "tag": [
+                "lightside",
+                "support"
+              ],
+              "targetRule": "target_datacron_50rt",
+              "abilityId": "datacron_character_generic_016",
+              "statType": 1,
+              "statValue": "0",
+              "requiredUnitTier": 0,
+              "requiredRelicTier": 7,
+              "scopeIcon": "tex.charui_50rt"
+            }
+          ],
+          "id": "cgL8n83hSQiMg-5673P-wA",
+          "setId": 16,
+          "templateId": "datacron_set_16_base"
+        }
+      },
+      "eventId": ""
+    },
+    {
+      "tab": 2,
+      "rank": 19,
+      "squad": {
+        "cell": [
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "VXBihqMuTWKXQViYnUAP2g",
+            "unitDefId": "CAPITALLEVIATHAN:SEVEN_STAR",
+            "cellIndex": 0,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 3,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "VtfYqkYORQCm7PfPRjq40g",
+            "unitDefId": "FURYCLASSINTERCEPTOR:SEVEN_STAR",
+            "cellIndex": 1,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "78mGZyKYTjeUP-0sCJSkww",
+            "unitDefId": "SITHFIGHTER:SEVEN_STAR",
+            "cellIndex": 2,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "ozuaOnL0Qzyt8vZ_6TbP1Q",
+            "unitDefId": "SITHBOMBER:SEVEN_STAR",
+            "cellIndex": 3,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 1,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "DcxDcf0oS169J1JvbRWeog",
+            "unitDefId": "TIEDAGGER:SEVEN_STAR",
+            "cellIndex": 4,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 5,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "jqN3L7tZRuiBh4HdiFa_CA",
+            "unitDefId": "SITHSUPREMACYCLASS:SEVEN_STAR",
+            "cellIndex": 5,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 5,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          },
+          {
+            "crewBattleStat": [
+
+            ],
+            "unitId": "7iBbxut0Qm-Vi4hUuX_yXA",
+            "unitDefId": "PHANTOM2:SEVEN_STAR",
+            "cellIndex": 6,
+            "unitBattleStat": null,
+            "messageReticle": "",
+            "progressItem": true,
+            "squadUnitType": 5,
+            "unitState": null,
+            "selectable": true,
+            "overkillItem": false,
+            "inheritFromDefinitionId": ""
+          }
+        ],
+        "targetingTactic": 1,
+        "squadType": 5,
+        "targetingSetId": "",
+        "expireTime": "0",
+        "lastSaveTime": "1725649472000",
+        "supportInheritFromDefinitionId": "",
+        "datacron": null
+      },
+      "eventId": ""
+    }
+  ],
+  "name": "Jago Dall",
+  "level": 85,
+  "allyCode": "134371529",
+  "playerId": "HFuvf-OURK202WASUgpayw",
+  "localTimeZoneOffsetMinutes": -300,
+  "lifetimeSeasonScore": "413699",
+  "playerRating": {
+    "playerSkillRating": {
+      "skillRating": 2984
+    },
+    "playerRankStatus": {
+      "leagueId": "KYBER",
+      "divisionId": 10
+    }
+  },
+  "nucleusId": "2256856407"
+}

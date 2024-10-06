@@ -60,6 +60,15 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/player', body.to_json))
   end
 
+  def player_arena(player_id, enums = false)
+    body = {
+      payload: format_player_id_hash(player_id),
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/playerArena', body.to_json))
+  end
+
   private
 
   def format_player_id_hash(player_id_original)
