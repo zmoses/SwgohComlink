@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/hash'
+require 'active_support/core_ext/string'
 require_relative 'comlink_api_request'
 
 require 'pry'
@@ -30,7 +31,7 @@ class SwgohComlink
 
   def metadata(client_specs = {}, enums = false)
     body = {}
-    body['payload'] = { "clientSpecs" => verify_client_specs(client_specs) } unless client_specs.empty?
+    body['payload'] = { "clientSpecs" => verify_parameters(client_specs, ['platform', 'bundleId', 'externalVersion', 'internalVersion', 'region']) } unless client_specs.empty?
     body['enums'] = false
 
     JSON.parse(@api_requester.post('/metadata', body.to_json))
@@ -81,6 +82,17 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/guild', body.to_json))
   end
 
+  def get_guilds(payload, search_criteria, enums = false)
+    body = {}
+    body[:payload] = verify_parameters(payload, ['filterType', 'startIndex', 'count', 'name'])
+    body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
+    body[:enums] = enums
+
+    raise ArgumentError, 'filterType must be 4 or 5' unless [4, 5].include?(body.dig(:payload, :filterType))
+
+    JSON.parse(@api_requester.post('/getGuilds', body.to_json))
+  end
+
   private
 
   def format_player_id_hash(player_id_original)
@@ -91,19 +103,12 @@ class SwgohComlink
     player_id.length == 9 ? { allyCode: player_id } : { playerID: player_id }
   end
 
-  def verify_client_specs(client_specs_original)
-    client_specs = client_specs_original.dup.with_indifferent_access
+  def verify_parameters(original_hash, permitted_keys)
+    original_hash = original_hash.with_indifferent_access
 
-    # handle camel and snake case
-    client_specs['bundleId'] = client_specs.delete('bundle_id') if client_specs['bundle_id']
-    client_specs['externalVersion'] = client_specs.delete('external_version') if client_specs['external_version']
-    client_specs['internalVersion'] = client_specs.delete('internal_version') if client_specs['internal_version']
+    original_hash.transform_keys! { |key| key.to_s.camelize(:lower) }
+    original_hash.slice!(*permitted_keys)
 
-    # remove invalid keys
-    client_specs.keys.each do |key|
-      client_specs.delete(key) unless ['platform', 'bundleId', 'externalVersion', 'internalVersion', 'region'].include?(key.to_s)
-    end
-
-    client_specs
+    original_hash
   end
 end

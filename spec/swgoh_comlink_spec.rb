@@ -28,6 +28,10 @@ describe SwgohComlink do
     it 'can retrieve data info' do
       expect(comlink.data("0.35.3:eD97HdfRTOG8C8c8qlajiQ", true)).to have_key('battleEnvironments')
     end
+
+    it 'requires filterType to be 4 or 5' do
+      expect { comlink.data("0.35.3:eD97HdfRTOG8C8c8qlajiQ", true, 23) }.to raise_error(ArgumentError, 'Request segment must be between 0 and 4')
+    end
   end
 
   describe '#player' do
@@ -48,6 +52,16 @@ describe SwgohComlink do
     end
   end
 
+  describe '#get_guilds' do
+    it 'can retrieve guild data with a search' do
+      expect(comlink.get_guilds({filterType: 5}, {}, false)).to have_key('includeStarterGuild')
+    end
+
+    it 'requires filterType to be 4 or 5' do
+      expect { comlink.get_guilds({}, {}, false) }.to raise_error(ArgumentError, 'filterType must be 4 or 5')
+    end
+  end
+
   describe '#format_player_id_hash' do
     it 'can handle player id and ally code params' do
       expect(comlink.send(:format_player_id_hash, '123456789')).to eq({ allyCode: '123456789' })
@@ -56,32 +70,42 @@ describe SwgohComlink do
     end
   end
 
-  describe '#verify_client_specs' do
-    it 'can handle any unknown client_specs keys' do
-      example_client_specs = {
+  describe '#verify_parameters' do
+    permitted_keys = ['platform', 'bundleId', 'externalVersion', 'internalVersion', 'region']
+
+    it 'can handle any unknown keys' do
+      example_hash = {
         platform: 'Android',
         i_do_not_belong: 'hello'
       }
 
-      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'platform' => 'Android' })
     end
 
     it 'can handle symbols and strings as keys' do
-      example_client_specs = {
+      example_hash = {
         platform: 'Android',
         "bundleId" => 'com.sw'
       }
 
-      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw' })
     end
 
     it 'can handle snake and camel case' do
-      example_client_specs = {
+      example_hash = {
         bundle_id:  'com.sw',
         externalVersion: '1.2.3'
       }
 
-      expect(comlink.send(:verify_client_specs, example_client_specs)).to eq({ 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+    end
+
+    it 'can handle an array of symbols too' do
+      example_hash = {
+        externalVersion: '1.2.3'
+      }
+
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys.map { |k| k.to_sym })).to eq({ 'externalVersion' => '1.2.3' })
     end
   end
 end

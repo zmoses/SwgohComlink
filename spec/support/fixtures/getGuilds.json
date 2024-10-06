@@ -1,0 +1,686 @@
+{
+  "guild": [
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "30",
+          "endTime": "1727024400000"
+        }
+      ],
+      "id": "pEg2LNB_Rn2kSz-GtIkcRA",
+      "name": "ThePhantomLTDL",
+      "externalMessageKey": "RotE 30* | Reva Ready | 40 Reva Shards | 7M considered | 8M preferred | Discord Required",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "white_red",
+      "bannerLogoId": "guild_icon_jedi",
+      "guildGalacticPower": "486790975",
+      "chatChannelId": "guild-{pEg2LNB_Rn2kSz-GtIkcRA}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "486790975",
+      "singleLaunchConfig": {
+        "raidId": "speederbike",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "ROTJ",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "SPEEDERBIKE"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": false,
+        "scheduledUtcOffsetSeconds": "61200"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "28",
+          "endTime": "1725814903000"
+        }
+      ],
+      "id": "7eQq6P7UQyqi_qmCBZCMaQ",
+      "name": "D? GoTHSithRaiders",
+      "externalMessageKey": "Active Guild/Reqs: 500 tix daily,TB,joined TW/Running BFN Raid",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "bright_blue_dark_blue",
+      "bannerLogoId": "guild_icon_senate",
+      "guildGalacticPower": "463025059",
+      "chatChannelId": "guild-{7eQq6P7UQyqi_qmCBZCMaQ}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "463025059",
+      "singleLaunchConfig": {
+        "raidId": "speederbike",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "ROTJ",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "SPEEDERBIKE"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "31",
+          "endTime": "1727024400000"
+        }
+      ],
+      "id": "43l-gAXcQ9SOcYJQvg4L_Q",
+      "name": "The C0vert",
+      "externalMessageKey": "This is the way. ",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "bright_blue_dark_blue",
+      "bannerLogoId": "guild_icon_mandalorian",
+      "guildGalacticPower": "486037204",
+      "chatChannelId": "guild-{43l-gAXcQ9SOcYJQvg4L_Q}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "486037204",
+      "singleLaunchConfig": {
+        "raidId": "kraytdragon",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "KRAYTDRAGON",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "DIFF01"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": false,
+        "scheduledUtcOffsetSeconds": "10800"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "29",
+          "endTime": "1724605244000"
+        }
+      ],
+      "id": "ocIe5rGKTr2MYmiEYjNiUQ",
+      "name": "Unionize the Jawas",
+      "externalMessageKey": "TW and TB focused. Discord required. San Holo#2228",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 48,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "bright_blue_dark_blue",
+      "bannerLogoId": "guild_icon_havoc",
+      "guildGalacticPower": "446334696",
+      "chatChannelId": "guild-{ocIe5rGKTr2MYmiEYjNiUQ}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "446334696",
+      "singleLaunchConfig": {
+        "raidId": "kraytdragon",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "KRAYTDRAGON",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "DIFF01"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "27",
+          "endTime": "1727024400000"
+        }
+      ],
+      "id": "bQq8wOSnQwSwk16NHgvwVQ",
+      "name": "Let Qui-Gons, Be Qui-Gons",
+      "externalMessageKey": "A guild where everyone gets along. Rote TB. ",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "green_blue",
+      "bannerLogoId": "guild_icon_jedi",
+      "guildGalacticPower": "445789986",
+      "chatChannelId": "guild-{bQq8wOSnQwSwk16NHgvwVQ}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "445789986",
+      "singleLaunchConfig": {
+        "raidId": "kraytdragon",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "KRAYTDRAGON",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "DIFF01"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "24",
+          "endTime": "1723396360000"
+        }
+      ],
+      "id": "z5MlU9JOSWaC7ZnHazehPA",
+      "name": "UWOL_Nar Shaddaa",
+      "externalMessageKey": "5+ GP, Causally Competitive TWs, Focused TBs, Discord required. 600/daily expected. Must join TW min",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "red_white",
+      "bannerLogoId": "guild_icon_mandalorian",
+      "guildGalacticPower": "445621480",
+      "chatChannelId": "guild-{z5MlU9JOSWaC7ZnHazehPA}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "445621480",
+      "singleLaunchConfig": {
+        "raidId": "kraytdragon",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "KRAYTDRAGON",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "DIFF01"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": false,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "27",
+          "endTime": "1725814953000"
+        }
+      ],
+      "id": "Zi3i_wx4Q-SoZzv-Rj1rKA",
+      "name": "THE SENATE ?Jedha?",
+      "externalMessageKey": "",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 49,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "cyan_purple",
+      "bannerLogoId": "guild_icon_jedi",
+      "guildGalacticPower": "432504089",
+      "chatChannelId": "guild-{Zi3i_wx4Q-SoZzv-Rj1rKA}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "432504089",
+      "singleLaunchConfig": {
+        "raidId": "speederbike",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "ROTJ",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "SPEEDERBIKE"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": false,
+        "scheduledUtcOffsetSeconds": "7200"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "32",
+          "endTime": "1727024400000"
+        }
+      ],
+      "id": "cEfMIDm8SEuI2QnRSiP3vQ",
+      "name": "Exiled_Warriors",
+      "externalMessageKey": "If you are a true warrior, competition doesn't scare you. It makes you stronger!",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 49,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "gold_purple",
+      "bannerLogoId": "guild_icon_triangle",
+      "guildGalacticPower": "468579667",
+      "chatChannelId": "guild-{cEfMIDm8SEuI2QnRSiP3vQ}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "468579667",
+      "singleLaunchConfig": {
+        "raidId": "speederbike",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "ROTJ",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "SPEEDERBIKE"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": false,
+        "scheduledUtcOffsetSeconds": "82800"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "30",
+          "endTime": "1727024400000"
+        }
+      ],
+      "id": "Gom1_LWhRjGB1lU0_ilIiQ",
+      "name": "Wampas Fury",
+      "externalMessageKey": "Min 6 mill gp with 2 GLs,500 daily tickets.Have inquisitors or be working on them. Discord required.",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 46,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "bright_blue_dark_blue",
+      "bannerLogoId": "guild_icon_wolffe",
+      "guildGalacticPower": "441166991",
+      "chatChannelId": "guild-{Gom1_LWhRjGB1lU0_ilIiQ}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "441166991",
+      "singleLaunchConfig": {
+        "raidId": "speederbike",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "ROTJ",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "SPEEDERBIKE"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    },
+    {
+      "messageCriteriaKey": [
+
+      ],
+      "raidLaunchConfig": [
+
+      ],
+      "guildEventTracker": [
+        {
+          "definitionId": "t05D",
+          "completedStars": "30",
+          "endTime": "1725815132000"
+        }
+      ],
+      "id": "D7aWEYmiRZC5s4XmZgOFeg",
+      "name": "Black Magic Ferrets",
+      "externalMessageKey": "Part of Knights of Nine Alliance. 460+ millions GP USA based. 30* ROTE, Mandatory discord",
+      "logoBackground": "",
+      "enrollmentStatus": 2,
+      "trophy": 0,
+      "memberCount": 50,
+      "memberMax": 50,
+      "level": 1,
+      "rank": 0,
+      "levelRequirement": 85,
+      "raidWin": 0,
+      "leaderboardScore": "0",
+      "bannerColorId": "bright_blue_dark_blue",
+      "bannerLogoId": "guild_icon_seventhfleet",
+      "guildGalacticPower": "461324044",
+      "chatChannelId": "guild-{D7aWEYmiRZC5s4XmZgOFeg}",
+      "guildType": "",
+      "guildGalacticPowerForRequirement": "461324044",
+      "singleLaunchConfig": {
+        "raidId": "kraytdragon",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "KRAYTDRAGON",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "DIFF01"
+        },
+        "autoLaunch": false,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      },
+      "autoLaunchConfig": {
+        "raidId": "naboo",
+        "campaignMissionIdentifier": {
+          "campaignId": "GUILD",
+          "campaignMapId": "RAIDS",
+          "campaignNodeId": "NABOO",
+          "campaignNodeDifficulty": 4,
+          "campaignMissionId": "NABOO"
+        },
+        "autoLaunch": true,
+        "autoLaunchImmediately": false,
+        "autoLaunchTime": "0",
+        "joinPeriodDuration": "0",
+        "autoSimEnabled": false,
+        "immediate": true,
+        "scheduledUtcOffsetSeconds": "0"
+      }
+    }
+  ],
+  "totalRecords": 0,
+  "includeStarterGuild": false
+}
