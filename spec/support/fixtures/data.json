@@ -1,0 +1,169 @@
+{
+  "units": [
+
+  ],
+  "battleEnvironments": [
+
+  ],
+  "xpTable": [
+
+  ],
+  "material": [
+
+  ],
+  "recipe": [
+
+  ],
+  "statProgression": [
+
+  ],
+  "category": [
+
+  ],
+  "helpEntry": [
+
+  ],
+  "challenge": [
+
+  ],
+  "skill": [
+
+  ],
+  "eventSampling": [
+
+  ],
+  "equipment": [
+
+  ],
+  "warDefinition": [
+
+  ],
+  "targetingSet": [
+
+  ],
+  "ability": [
+
+  ],
+  "effect": [
+
+  ],
+  "requirement": [
+
+  ],
+  "powerUpBundle": [
+
+  ],
+  "raidConfig": [
+
+  ],
+  "guildRaid": [
+
+  ],
+  "statModSet": [
+
+  ],
+  "statMod": [
+
+  ],
+  "guildExchangeItem": [
+
+  ],
+  "table": [
+
+  ],
+  "unlockAnnouncementDefinition": [
+
+  ],
+  "battleTargetingRule": [
+
+  ],
+  "territoryBattleDefinition": [
+
+  ],
+  "territoryWarDefinition": [
+
+  ],
+  "environmentCollection": [
+
+  ],
+  "challengeStyle": [
+
+  ],
+  "starterGuild": [
+
+  ],
+  "playerTitle": [
+
+  ],
+  "modRecommendation": [
+
+  ],
+  "persistentVfx": [
+
+  ],
+  "territoryTournamentDefinition": [
+
+  ],
+  "eventBonus": [
+
+  ],
+  "seasonDefinition": [
+
+  ],
+  "playerPortrait": [
+
+  ],
+  "effectIconPriority": [
+
+  ],
+  "mysteryBox": [
+
+  ],
+  "mysteryStatMod": [
+
+  ],
+  "cooldown": [
+
+  ],
+  "dailyActionCap": [
+
+  ],
+  "energyReward": [
+
+  ],
+  "seasonLeagueDefinition": [
+
+  ],
+  "seasonDivisionDefinition": [
+
+  ],
+  "seasonRewardTable": [
+
+  ],
+  "relicTierDefinition": [
+
+  ],
+  "scavengerConversionSet": [
+
+  ],
+  "unitGuideDefinition": [
+
+  ],
+  "galacticBundle": [
+
+  ],
+  "linkedStoreItem": [
+
+  ],
+  "territoryTournamentLeagueDefinition": [
+
+  ],
+  "territoryTournamentDivisionDefinition": [
+
+  ],
+  "savedSquadConfig": [
+
+  ],
+  "campaign": [
+  ]
+}
