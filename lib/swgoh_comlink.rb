@@ -93,6 +93,14 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/getGuilds', body.to_json))
   end
 
+  def get_events(enums = false)
+    body = {
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/getEvents', body.to_json))
+  end
+
   private
 
   def format_player_id_hash(player_id_original)

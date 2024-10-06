@@ -62,6 +62,12 @@ describe SwgohComlink do
     end
   end
 
+  describe '#get_events' do
+    it 'can retrieve event data' do
+      expect(comlink.get_events).to have_key('gameEvent')
+    end
+  end
+
   describe '#format_player_id_hash' do
     it 'can handle player id and ally code params' do
       expect(comlink.send(:format_player_id_hash, '123456789')).to eq({ allyCode: '123456789' })
