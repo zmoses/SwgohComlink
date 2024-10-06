@@ -36,9 +36,15 @@ describe SwgohComlink do
     end
   end
 
-  describe '#player' do
+  describe '#player_arena' do
     it 'can retrieve player arena data' do
       expect(comlink.player_arena('123456789')).to have_key('pvpProfile')
+    end
+  end
+
+  describe '#guild' do
+    it 'can retrieve guild data' do
+      expect(comlink.guild('bQq8wOSnQwSwk16NHgvwVQ')).to have_key('guild')
     end
   end
 

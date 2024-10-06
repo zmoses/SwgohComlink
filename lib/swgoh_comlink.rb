@@ -69,9 +69,23 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/playerArena', body.to_json))
   end
 
+  def guild(guild_id, include_recent_guild_activity = false, enums = false)
+    body = {
+      payload: {
+        guildId: guild_id,
+        includeRecentGuildActivityInfo: include_recent_guild_activity
+      },
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/guild', body.to_json))
+  end
+
   private
 
   def format_player_id_hash(player_id_original)
+    # This can accept the 9 digit ally code (ex: 123-456-789)
+    # OR it can accept the full playerId (ex: HFuvf-OURK202WASUgpayw)
     player_id = player_id_original.dup
     player_id.gsub!('-', '') if player_id.length == 11
     player_id.length == 9 ? { allyCode: player_id } : { playerID: player_id }
