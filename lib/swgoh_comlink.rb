@@ -38,16 +38,16 @@ class SwgohComlink
   end
 
   def data(version, include_pve_units = true, request_segment = 0, enums = false)
-    raise ArgumentError, 'Request segment must be between 0 and 4' unless (0..4).include?(request_segment)
-
     body = {
-      "payload": {
-          "version": version,
-          "includePveUnits": include_pve_units,
-          "requestSegment": request_segment
+      payload: {
+        version: version,
+        includePveUnits: include_pve_units,
+        requestSegment: request_segment
       },
-      "enums": enums
+      enums: enums
     }
+
+    body_validation(body, [ { validation: (0..4), error_message: 'Request segment must be between 0 and 4', path: [:payload, :requestSegment] } ])
 
     JSON.parse(@api_requester.post('/data', body.to_json))
   end
@@ -88,7 +88,7 @@ class SwgohComlink
     body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
     body[:enums] = enums
 
-    raise ArgumentError, 'filterType must be 4 or 5' unless [4, 5].include?(body.dig(:payload, :filterType))
+    body_validation(body, [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType] } ])
 
     JSON.parse(@api_requester.post('/getGuilds', body.to_json))
   end
@@ -118,5 +118,14 @@ class SwgohComlink
     original_hash.slice!(*permitted_keys)
 
     original_hash
+  end
+
+  def body_validation(body, requirements)
+    requirements.each do |req_set|
+      value = body.dig(*req_set[:path])
+      raise ArgumentError, req_set[:error_message] unless req_set[:validation].include?(value)
+    end
+
+    true
   end
 end

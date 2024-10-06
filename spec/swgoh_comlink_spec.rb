@@ -114,4 +114,27 @@ describe SwgohComlink do
       expect(comlink.send(:verify_parameters, example_hash, permitted_keys.map { |k| k.to_sym })).to eq({ 'externalVersion' => '1.2.3' })
     end
   end
+
+  describe '#body_validation' do
+    it 'throws an error for an invalid body' do
+      body = { this_should_be_1: 0 }
+      requirements = [ { validation: [ 1 ], error_message: 'I should be 1', path: [:i_should_be_1] } ]
+
+      expect { comlink.send(:body_validation, body, requirements) }.to raise_error(ArgumentError, 'I should be 1')
+    end
+
+    it 'throws an error for an invalid nested key' do
+      body = { i_am_valid: { but_i_am_not: 0 } }
+      requirements = [ { validation: [ 1 ], error_message: 'I should be 1', path: [:i_am_valid, :but_i_am_not] } ]
+
+      expect { comlink.send(:body_validation, body, requirements) }.to raise_error(ArgumentError, 'I should be 1')
+    end
+
+    it 'returns no error if validation passes' do
+      body = { this_should_be_1: 1 }
+      requirements = [ { validation: [ 1 ], error_message: 'This should be 1', path: [:this_should_be_1] } ]
+
+      expect(comlink.send(:body_validation, body, requirements)).to eq(true)
+    end
+  end
 end
