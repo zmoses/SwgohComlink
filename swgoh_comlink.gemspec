@@ -5,8 +5,8 @@ Gem::Specification.new do |s|
   s.description = 'A wrapper to connect to SWGOH Comlink APIs'
   s.authors     = ['Zach Moses']
   s.email       = 'zmoses93@gmail.com'
-  s.files       = ['lib/swgoh_comlink.rb']
-  s.homepage    = 'https://rubygems.org/gems/swgoh_comlink'
+  s.files       = ['lib/swgoh_comlink.rb', 'lib/comlink_api_request.rb']
+  s.homepage    = 'https://github.com/zmoses/SwgohComlink'
   s.license     = 'MIT'
   s.required_ruby_version = '>= 2.7.0'
   s.add_development_dependency 'rspec'

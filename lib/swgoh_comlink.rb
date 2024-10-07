@@ -4,8 +4,6 @@ require 'active_support/core_ext/hash'
 require 'active_support/core_ext/string'
 require_relative 'comlink_api_request'
 
-require 'pry'
-
 # Base class for the gem, a wrapper for Comlink
 # See https://github.com/swgoh-utils/swgoh-comlink for more info on Comlink
 class SwgohComlink
