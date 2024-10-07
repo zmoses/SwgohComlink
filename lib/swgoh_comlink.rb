@@ -126,6 +126,49 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/getLeaderboard', body.to_json))
   end
 
+  def get_guild_leaderboard(leaderboards, count, enums = false)
+    def_ids = [
+      'sith_raid',
+      'rancor',
+      'aat',
+      'kraytdragon',
+      'speederbike',
+      't01D',
+      't02D',
+      't03D',
+      't04D',
+      't05D',
+      'TERRITORY_WAR_LEADERBOARD',
+      'GUILD:RAIDS:NORMAL_DIFF:RANCOR:DIFF06',
+      'GUILD:RAIDS:NORMAL_DIFF:RANCOR:HEROIC80',
+      'GUILD:RAIDS:NORMAL_DIFF:AAT:DIFF06',
+      'GUILD:RAIDS:NORMAL_DIFF:AAT:HEROIC85',
+      'GUILD:RAIDS:NORMAL_DIFF:SITH_RAID:DIFF06',
+      'GUILD:RAIDS:NORMAL_DIFF:SITH_RAID:HEROIC85',
+      'GUILD:RAIDS:NORMAL_DIFF:KRAYTDRAGON:DIFF01',
+      'GUILD:RAIDS:NORMAL_DIFF:ROTJ:SPEEDERBIKE'
+    ]
+
+    leaderboards.each do |leaderboard|
+      payload = verify_parameters(leaderboard, ['leaderboardType', 'defId', 'monthOffset'])
+      body_validation(leaderboard, [
+        { validation: [0, 2, 3, 4, 5, 6], error_message: 'leaderboardType must in [0, 2, 3, 4, 5, 6]', path: [:leaderboardType], required: true },
+        { validation: def_ids, error_message: 'defId must be certain values, see docs', path: [:defId], required: [2, 4, 5, 6].include?(leaderboard.with_indifferent_access[:leaderboardType]) },
+        { validation: [0, 1], error_message: 'monthOffset must 0 or 1', path: [:monthOffset] }
+      ])
+    end
+
+    body = {
+      payload: {
+        leaderboardId: leaderboards,
+        count: count
+      },
+      enums: enums
+    }
+
+    JSON.parse(@api_requester.post('/getGuildLeaderboard', body.to_json))
+  end
+
   private
 
   def format_player_id_hash(player_id_original)

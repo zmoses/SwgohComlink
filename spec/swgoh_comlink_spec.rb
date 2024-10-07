@@ -117,6 +117,17 @@ describe SwgohComlink do
     end
   end
 
+  describe '#get_guild_leaderboard' do
+    it 'can retrieve guild leaderboard data' do
+      leaderboards = [
+        { leaderboardType: 4, defId: 't05D', monthOffset: 0 },
+        { leaderboardType: 6, defId: 'GUILD:RAIDS:NORMAL_DIFF:KRAYTDRAGON:DIFF01', monthOffset: 1 }
+      ]
+
+      expect(comlink.get_guild_leaderboard(leaderboards, 100)).to have_key('leaderboard')
+    end
+  end
+
   describe '#format_player_id_hash' do
     it 'can handle player id and ally code params' do
       expect(comlink.send(:format_player_id_hash, '123456789')).to eq({ allyCode: '123456789' })
