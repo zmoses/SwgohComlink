@@ -80,13 +80,24 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/guild', body.to_json))
   end
 
-  def get_guilds(payload, search_criteria, enums = false)
-    body = {}
-    body[:payload] = verify_parameters(payload, ['filterType', 'startIndex', 'count', 'name'])
-    body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
-    body[:enums] = enums
+  def get_guilds(filter_type, count = 200, name = nil, search_criteria = {}, enums = false)
+    body = {
+      payload: {
+        filterType: filter_type,
+        count: count,
+        enums: enums
+      }
+    }
 
     body_validation(body, [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType], required: true } ])
+
+    if name && name != ''
+      body[:payload][:name] = name
+    elsif search_criteria != {}
+      body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
+    else
+      raise ArgumentError, 'Must provide name or search criteria'
+    end
 
     JSON.parse(@api_requester.post('/getGuilds', body.to_json))
   end
