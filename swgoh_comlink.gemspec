@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'swgoh_comlink'
-  s.version     = '0.0.1'
+  s.version     = '0.1.0'
   s.summary     = 'Created to connect with deployed Star Wars: Galaxy of Heroes Comlink APIs. For more information on Comlink, see their Github page: https://github.com/swgoh-utils/swgoh-comlink'
   s.description = 'A wrapper to connect to SWGOH Comlink APIs'
   s.authors     = ['Zach Moses']
