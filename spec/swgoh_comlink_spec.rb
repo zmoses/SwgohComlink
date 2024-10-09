@@ -54,15 +54,19 @@ describe SwgohComlink do
 
   describe '#get_guilds' do
     it 'can retrieve guild data with a search' do
-      expect(comlink.get_guilds(5, 100, 'test', nil, false)).to have_key('includeStarterGuild')
+      expect(comlink.get_guilds(4, 'test', {}, 11, true)).to have_key('includeStarterGuild')
     end
 
     it 'requires filterType to be 4 or 5' do
-      expect { comlink.get_guilds(82, 100, 'test', {}, false) }.to raise_error(ArgumentError, 'filterType must be 4 or 5')
+      expect { comlink.get_guilds(82, 'test', {}, 11, false) }.to raise_error(ArgumentError, 'filterType must be 4 or 5')
     end
 
-    it 'requires name or search criteria' do
-      expect { comlink.get_guilds(4) }.to raise_error(ArgumentError, 'Must provide name or search criteria')
+    it 'requires name if filterType is 4' do
+      expect { comlink.get_guilds(4, nil, { minMemberCount: 1 }) }.to raise_error(ArgumentError, 'Name is required when filterType is 4')
+    end
+
+    it 'requires searchCriteria if filterType is 5' do
+      expect { comlink.get_guilds(5, 'ishouldnotbehere') }.to raise_error(ArgumentError, 'searchCriteria is required when filterType is 5')
     end
   end
 

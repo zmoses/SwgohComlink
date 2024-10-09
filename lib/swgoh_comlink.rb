@@ -80,7 +80,7 @@ class SwgohComlink
     JSON.parse(@api_requester.post('/guild', body.to_json))
   end
 
-  def get_guilds(filter_type, count = 200, name = nil, search_criteria = {}, enums = false)
+  def get_guilds(filter_type, name = nil, search_criteria = nil, count = 10, enums = false)
     body = {
       payload: {
         filterType: filter_type,
@@ -89,15 +89,17 @@ class SwgohComlink
       }
     }
 
-    body_validation(body, [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType], required: true } ])
+    validations = [ { validation: [4, 5], error_message: 'filterType must be 4 or 5', path: [:payload, :filterType], required: true } ]
 
-    if name && name != ''
+    if filter_type == 4
       body[:payload][:name] = name
-    elsif search_criteria != {}
-      body[:payload][:searchCriteria] = verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
-    else
-      raise ArgumentError, 'Must provide name or search criteria'
+      validations << { error_message: 'Name is required when filterType is 4', path: [:payload, :name], required: true }
+    elsif filter_type == 5
+      body[:payload][:searchCriteria] = search_criteria && verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
+      validations << { error_message: 'searchCriteria is required when filterType is 5', path: [:payload, :searchCriteria], required: true }
     end
+
+    body_validation(body, validations)
 
     JSON.parse(@api_requester.post('/getGuilds', body.to_json))
   end
