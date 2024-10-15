@@ -7,8 +7,8 @@ require_relative 'comlink_api_request'
 # Base class for the gem, a wrapper for Comlink
 # See https://github.com/swgoh-utils/swgoh-comlink for more info on Comlink
 class SwgohComlink
-  def initialize(comlink_url, keys = {})
-    @api_requester = ComlinkApiRequest.new(comlink_url, keys)
+  def initialize(comlink_url, **keys)
+    @api_requester = ComlinkApiRequest.new(comlink_url, **keys)
   end
 
   def enums

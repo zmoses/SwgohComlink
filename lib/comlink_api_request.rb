@@ -8,7 +8,7 @@ require 'active_support/core_ext/hash/indifferent_access'
 class ComlinkApiRequest
   attr_accessor :hmac_enabled, :comlink_url
 
-  def initialize(comlink_url, keys)
+  def initialize(comlink_url, **keys)
     @comlink_url = comlink_url.start_with?('http') ? comlink_url : "https://#{comlink_url}"
     @hmac_enabled = false
     return if keys.empty?
