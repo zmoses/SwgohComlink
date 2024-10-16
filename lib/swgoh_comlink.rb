@@ -14,21 +14,19 @@ class SwgohComlink
   end
 
   def localization(id, unzip = false, enums = false)
-    body = {
-      payload: {
-        id: id
-      },
-      unzip: unzip,
-      enums: enums
-    }
+    body = { payload: { id: }, unzip:, enums: }
 
     JSON.parse(@api_requester.post('/localization', body.to_json))
   end
 
   def metadata(client_specs = {}, enums = false)
     body = {}
-    body['payload'] = { 'clientSpecs' => verify_parameters(client_specs, [:platform, :bundleId, :externalVersion, :internalVersion, :region]) } unless client_specs.empty?
-    body['enums'] = false
+    unless client_specs.empty?
+      body['payload'] = {
+        clientSpecs: verify_parameters(client_specs, [:platform, :bundleId, :externalVersion, :internalVersion, :region])
+      }
+    end
+    body['enums'] = enums
 
     JSON.parse(@api_requester.post('/metadata', body.to_json))
   end
@@ -36,11 +34,11 @@ class SwgohComlink
   def data(version, include_pve_units = true, request_segment = 0, enums = false)
     body = {
       payload: {
-        version: version,
+        version:,
         includePveUnits: include_pve_units,
         requestSegment: request_segment
       },
-      enums: enums
+      enums:
     }
 
     body_validation(body, [ { validation: (0..4), error_message: 'Request segment must be between 0 and 4', path: [:payload, :requestSegment] } ])
@@ -49,10 +47,7 @@ class SwgohComlink
   end
 
   def player(player_id, enums = false)
-    body = {
-      payload: format_player_id_hash(player_id),
-      enums: enums
-    }
+    body = { payload: format_player_id_hash(player_id), enums: }
 
     JSON.parse(@api_requester.post('/player', body.to_json))
   end
@@ -60,7 +55,7 @@ class SwgohComlink
   def player_arena(player_id, enums = false)
     body = {
       payload: format_player_id_hash(player_id),
-      enums: enums
+      enums:
     }
 
     JSON.parse(@api_requester.post('/playerArena', body.to_json))
@@ -72,7 +67,7 @@ class SwgohComlink
         guildId: guild_id,
         includeRecentGuildActivityInfo: include_recent_guild_activity
       },
-      enums: enums
+      enums:
     }
 
     JSON.parse(@api_requester.post('/guild', body.to_json))
@@ -82,8 +77,8 @@ class SwgohComlink
     body = {
       payload: {
         filterType: filter_type,
-        count: count,
-        enums: enums
+        count:,
+        enums:
       }
     }
 
@@ -103,9 +98,7 @@ class SwgohComlink
   end
 
   def get_events(enums = false)
-    body = {
-      enums: enums
-    }
+    body = { enums: }
 
     JSON.parse(@api_requester.post('/getEvents', body.to_json))
   end
@@ -127,16 +120,13 @@ class SwgohComlink
       ])
     end
 
-    body = {
-      payload: payload,
-      enums: false
-    }
+    body = { payload:, enums: }
 
     JSON.parse(@api_requester.post('/getLeaderboard', body.to_json))
   end
 
   def get_guild_leaderboard(leaderboards, count, enums = false)
-    def_ids = [
+    valid_def_ids = [
       'sith_raid',
       'rancor',
       'aat',
@@ -162,7 +152,7 @@ class SwgohComlink
       payload = verify_parameters(leaderboard, [:leaderboardType, :defId, :monthOffset])
       body_validation(leaderboard, [
         { validation: [0, 2, 3, 4, 5, 6], error_message: 'leaderboardType must in [0, 2, 3, 4, 5, 6]', path: [:leaderboardType], required: true },
-        { validation: def_ids, error_message: 'defId must be certain values, see docs', path: [:defId], required: [2, 4, 5, 6].include?(leaderboard.transform_keys(&:to_sym)[:leaderboardType]) },
+        { validation: valid_def_ids, error_message: 'defId must be certain values, see docs', path: [:defId], required: [2, 4, 5, 6].include?(leaderboard.transform_keys(&:to_sym)[:leaderboardType]) },
         { validation: [0, 1], error_message: 'monthOffset must 0 or 1', path: [:monthOffset] }
       ])
     end
@@ -170,9 +160,9 @@ class SwgohComlink
     body = {
       payload: {
         leaderboardId: leaderboards,
-        count: count
+        count:
       },
-      enums: enums
+      enums:
     }
 
     JSON.parse(@api_requester.post('/getGuildLeaderboard', body.to_json))
