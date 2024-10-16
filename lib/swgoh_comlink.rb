@@ -16,7 +16,7 @@ class SwgohComlink
   def localization(id, unzip = false, enums = false)
     body = { payload: { id: }, unzip:, enums: }
 
-    JSON.parse(@api_requester.post('/localization', body.to_json))
+    parse_post_response('/localization', body.to_json)
   end
 
   def metadata(client_specs = {}, enums = false)
@@ -28,7 +28,7 @@ class SwgohComlink
     end
     body['enums'] = enums
 
-    JSON.parse(@api_requester.post('/metadata', body.to_json))
+    parse_post_response('/metadata', body.to_json)
   end
 
   def data(version, include_pve_units = true, request_segment = 0, enums = false)
@@ -43,13 +43,13 @@ class SwgohComlink
 
     body_validation(body, [ { validation: (0..4), error_message: 'Request segment must be between 0 and 4', path: [:payload, :requestSegment] } ])
 
-    JSON.parse(@api_requester.post('/data', body.to_json))
+    parse_post_response('/data', body.to_json)
   end
 
   def player(player_id, enums = false)
     body = { payload: format_player_id_hash(player_id), enums: }
 
-    JSON.parse(@api_requester.post('/player', body.to_json))
+    parse_post_response('/player', body.to_json)
   end
 
   def player_arena(player_id, enums = false)
@@ -58,7 +58,7 @@ class SwgohComlink
       enums:
     }
 
-    JSON.parse(@api_requester.post('/playerArena', body.to_json))
+    parse_post_response('/playerArena', body.to_json)
   end
 
   def guild(guild_id, include_recent_guild_activity = false, enums = false)
@@ -70,7 +70,7 @@ class SwgohComlink
       enums:
     }
 
-    JSON.parse(@api_requester.post('/guild', body.to_json))
+    parse_post_response('/guild', body.to_json)
   end
 
   def get_guilds(filter_type, name = nil, search_criteria = nil, count = 10, enums = false)
@@ -94,13 +94,13 @@ class SwgohComlink
 
     body_validation(body, validations)
 
-    JSON.parse(@api_requester.post('/getGuilds', body.to_json))
+    parse_post_response('/getGuilds', body.to_json)
   end
 
   def get_events(enums = false)
     body = { enums: }
 
-    JSON.parse(@api_requester.post('/getEvents', body.to_json))
+    parse_post_response('/getEvents', body.to_json)
   end
 
   def get_leaderboard(payload, enums = false)
@@ -122,7 +122,7 @@ class SwgohComlink
 
     body = { payload:, enums: }
 
-    JSON.parse(@api_requester.post('/getLeaderboard', body.to_json))
+    parse_post_response('/getLeaderboard', body.to_json)
   end
 
   def get_guild_leaderboard(leaderboards, count, enums = false)
@@ -165,7 +165,7 @@ class SwgohComlink
       enums:
     }
 
-    JSON.parse(@api_requester.post('/getGuildLeaderboard', body.to_json))
+    parse_post_response('/getGuildLeaderboard', body.to_json)
   end
 
   private
@@ -195,6 +195,10 @@ class SwgohComlink
     end
 
     true
+  end
+
+  def parse_post_response(route, body)
+    JSON.parse(@api_requester.post(route, body.to_json))
   end
 
   def camelize(string)
