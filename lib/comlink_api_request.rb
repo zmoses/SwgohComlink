@@ -23,12 +23,7 @@ class ComlinkApiRequest
   end
 
   def get(path)
-    uri = URI.parse("#{@comlink_url}#{path}")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(uri.request_uri)
-
-    http.request(request).body
+    Net::HTTP.get_response(URI("#{@comlink_url}#{path}")).body
   end
 
   def post(path, body)
