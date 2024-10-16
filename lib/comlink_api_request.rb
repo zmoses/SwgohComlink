@@ -3,7 +3,6 @@ require 'digest'
 require 'json'
 require 'net/http'
 require 'uri'
-require 'active_support/core_ext/hash/indifferent_access'
 
 class ComlinkApiRequest
   attr_accessor :hmac_enabled, :comlink_url
@@ -13,9 +12,9 @@ class ComlinkApiRequest
     @hmac_enabled = false
     return if keys.empty?
 
-    keys = keys.with_indifferent_access
-    @secret_key = keys['secret_key']
-    @access_key = keys['access_key']
+    keys = keys.transform_keys(&:to_sym)
+    @secret_key = keys[:secret_key]
+    @access_key = keys[:access_key]
 
     raise ArgumentError, 'Secret key missing' unless @secret_key
     raise ArgumentError, 'Access key missing' unless @access_key

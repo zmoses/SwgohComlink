@@ -145,7 +145,7 @@ describe SwgohComlink do
   end
 
   describe '#verify_parameters' do
-    permitted_keys = ['platform', 'bundleId', 'externalVersion', 'internalVersion', 'region']
+    permitted_keys = [:platform, :bundleId, :externalVersion, :internalVersion, :region]
 
     it 'can handle any unknown keys' do
       example_hash = {
@@ -153,7 +153,7 @@ describe SwgohComlink do
         i_do_not_belong: 'hello'
       }
 
-      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'platform' => 'Android' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ platform: 'Android' })
     end
 
     it 'can handle symbols and strings as keys' do
@@ -162,7 +162,7 @@ describe SwgohComlink do
         "bundleId" => 'com.sw'
       }
 
-      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'platform' => 'Android', 'bundleId' => 'com.sw' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ platform: 'Android', bundleId: 'com.sw' })
     end
 
     it 'can handle snake and camel case' do
@@ -171,7 +171,7 @@ describe SwgohComlink do
         externalVersion: '1.2.3'
       }
 
-      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ 'bundleId' => 'com.sw', 'externalVersion' => '1.2.3' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys)).to eq({ bundleId: 'com.sw', externalVersion: '1.2.3' })
     end
 
     it 'can handle an array of symbols too' do
@@ -179,7 +179,7 @@ describe SwgohComlink do
         externalVersion: '1.2.3'
       }
 
-      expect(comlink.send(:verify_parameters, example_hash, permitted_keys.map { |k| k.to_sym })).to eq({ 'externalVersion' => '1.2.3' })
+      expect(comlink.send(:verify_parameters, example_hash, permitted_keys.map { |k| k.to_sym })).to eq({ externalVersion: '1.2.3' })
     end
   end
 

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/hash'
 require 'active_support/core_ext/string'
 require_relative 'comlink_api_request'
 
@@ -29,7 +28,7 @@ class SwgohComlink
 
   def metadata(client_specs = {}, enums = false)
     body = {}
-    body['payload'] = { "clientSpecs" => verify_parameters(client_specs, ['platform', 'bundleId', 'externalVersion', 'internalVersion', 'region']) } unless client_specs.empty?
+    body['payload'] = { 'clientSpecs' => verify_parameters(client_specs, [:platform, :bundleId, :externalVersion, :internalVersion, :region]) } unless client_specs.empty?
     body['enums'] = false
 
     JSON.parse(@api_requester.post('/metadata', body.to_json))
@@ -95,7 +94,7 @@ class SwgohComlink
       body[:payload][:name] = name
       validations << { error_message: 'Name is required when filterType is 4', path: [:payload, :name], required: true }
     elsif filter_type == 5
-      body[:payload][:searchCriteria] = search_criteria && verify_parameters(search_criteria, ['minMemberCount', 'maxMemberCount', 'includeInviteOnly', 'minGuildGalacticPower', 'maxGuildGalacticPower', 'recentTbParticipatedIn'])
+      body[:payload][:searchCriteria] = search_criteria && verify_parameters(search_criteria, [:minMemberCount, :maxMemberCount, :includeInviteOnly, :minGuildGalacticPower, :maxGuildGalacticPower, :recentTbParticipatedIn])
       validations << { error_message: 'searchCriteria is required when filterType is 5', path: [:payload, :searchCriteria], required: true }
     end
 
@@ -116,13 +115,13 @@ class SwgohComlink
     body_validation(payload, [ { validation: [4, 6], error_message: 'leaderboardType must be 4 or 6', path: [:leaderboardType] } ])
 
     if payload[:leaderboardType] == 4 || payload[:leaderboard_type] == 4
-      payload = verify_parameters(payload, ['leaderboardType', 'eventInstanceId', 'groupId'])
+      payload = verify_parameters(payload, [:leaderboardType, :eventInstanceId, :groupId])
       body_validation(payload, [
         { error_message: 'eventInstanceId must be present', path: [:eventInstanceId], required: true },
         { error_message: 'groupId must be present', path: [:groupId], required: true }
       ])
     else
-      payload = verify_parameters(payload, ['leaderboardType', 'league', 'division'])
+      payload = verify_parameters(payload, [:leaderboardType, :league, :division])
       body_validation(payload, [
         { validation: [20, 40, 60, 80, 100], error_message: 'league must be in [20, 40, 60, 80, 100]', path: [:league], required: true },
         { validation: [5, 10, 15, 20, 25], error_message: 'division must be in [5, 10, 15, 20, 25]', path: [:division], required: true }
@@ -161,10 +160,10 @@ class SwgohComlink
     ]
 
     leaderboards.each do |leaderboard|
-      payload = verify_parameters(leaderboard, ['leaderboardType', 'defId', 'monthOffset'])
+      payload = verify_parameters(leaderboard, [:leaderboardType, :defId, :monthOffset])
       body_validation(leaderboard, [
         { validation: [0, 2, 3, 4, 5, 6], error_message: 'leaderboardType must in [0, 2, 3, 4, 5, 6]', path: [:leaderboardType], required: true },
-        { validation: def_ids, error_message: 'defId must be certain values, see docs', path: [:defId], required: [2, 4, 5, 6].include?(leaderboard.with_indifferent_access[:leaderboardType]) },
+        { validation: def_ids, error_message: 'defId must be certain values, see docs', path: [:defId], required: [2, 4, 5, 6].include?(leaderboard.transform_keys(&:to_sym)[:leaderboardType]) },
         { validation: [0, 1], error_message: 'monthOffset must 0 or 1', path: [:monthOffset] }
       ])
     end
@@ -191,9 +190,9 @@ class SwgohComlink
   end
 
   def verify_parameters(original_hash, permitted_keys)
-    original_hash = original_hash.with_indifferent_access
+    original_hash = original_hash.transform_keys(&:to_sym)
 
-    original_hash.transform_keys! { |key| key.to_s.camelize(:lower) }
+    original_hash.transform_keys! { |key| key.to_s.camelize(:lower).to_sym }
     original_hash.slice!(*permitted_keys)
 
     original_hash
