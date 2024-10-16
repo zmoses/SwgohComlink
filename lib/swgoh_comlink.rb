@@ -192,9 +192,7 @@ class SwgohComlink
     original_hash = original_hash.transform_keys(&:to_sym)
 
     original_hash.transform_keys! { |key| camelize(key.to_s).to_sym }
-    original_hash.slice!(*permitted_keys)
-
-    original_hash
+    original_hash.select { |key| permitted_keys.include?(key) }
   end
 
   def body_validation(body, requirements)
