@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/string'
 require_relative 'comlink_api_request'
 
 # Base class for the gem, a wrapper for Comlink
@@ -192,7 +191,7 @@ class SwgohComlink
   def verify_parameters(original_hash, permitted_keys)
     original_hash = original_hash.transform_keys(&:to_sym)
 
-    original_hash.transform_keys! { |key| key.to_s.camelize(:lower).to_sym }
+    original_hash.transform_keys! { |key| camelize(key.to_s).to_sym }
     original_hash.slice!(*permitted_keys)
 
     original_hash
@@ -208,5 +207,9 @@ class SwgohComlink
     end
 
     true
+  end
+
+  def camelize(string)
+    string.gsub(/(?:_|(\/))([a-z\d]*)/) { "#{$1}#{$2.capitalize}" }.gsub("/", "::")
   end
 end
