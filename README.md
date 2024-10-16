@@ -16,7 +16,7 @@ Start by initializing the base class which you can then use to call any endpoint
 
 If HMAC signing is enabled, you can pass in your keys like this:
 
-`comlink = SwgohComlink.new('mycomlinkserver.com', {secret_key: 'mysecretkey, access_key: 'myaccesskey'})`
+`comlink = SwgohComlink.new('mycomlinkserver.com', secret_key: 'mysecretkey, access_key: 'myaccesskey')`
 
 ## Usage
 

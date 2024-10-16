@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe SwgohComlink do
   # swgohcomlink.com stubs out to the fake server, do not change
-  comlink = SwgohComlink.new('swgohcomlink.com', { access_key: 'ak', secret_key: 'sk' })
+  comlink = SwgohComlink.new('swgohcomlink.com', access_key: 'ak', secret_key: 'sk')
 
   describe '#enums' do
     it 'can retrieve enums' do
