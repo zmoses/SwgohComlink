@@ -142,6 +142,10 @@ describe SwgohComlink do
       expect(comlink.send(:format_player_id_hash, '123-456-789')).to eq({ allyCode: '123456789' })
       expect(comlink.send(:format_player_id_hash, 'abcdef123456789')).to eq({ playerID: 'abcdef123456789' })
     end
+
+    it 'can handle player id as an integer' do
+      expect(comlink.send(:format_player_id_hash, 123456789)).to eq({ allyCode: '123456789' })
+    end
   end
 
   describe '#verify_parameters' do

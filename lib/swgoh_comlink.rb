@@ -16,7 +16,7 @@ class SwgohComlink
   def localization(id, unzip = false, enums = false)
     body = { payload: { id: }, unzip:, enums: }
 
-    parse_post_response('/localization', body.to_json)
+    parse_post_response('/localization', body)
   end
 
   def metadata(client_specs = {}, enums = false)
@@ -28,7 +28,7 @@ class SwgohComlink
     end
     body['enums'] = enums
 
-    parse_post_response('/metadata', body.to_json)
+    parse_post_response('/metadata', body)
   end
 
   def data(version, include_pve_units = true, request_segment = 0, enums = false)
@@ -43,13 +43,13 @@ class SwgohComlink
 
     body_validation(body, [ { validation: (0..4), error_message: 'Request segment must be between 0 and 4', path: [:payload, :requestSegment] } ])
 
-    parse_post_response('/data', body.to_json)
+    parse_post_response('/data', body)
   end
 
   def player(player_id, enums = false)
     body = { payload: format_player_id_hash(player_id), enums: }
 
-    parse_post_response('/player', body.to_json)
+    parse_post_response('/player', body)
   end
 
   def player_arena(player_id, enums = false)
@@ -58,7 +58,7 @@ class SwgohComlink
       enums:
     }
 
-    parse_post_response('/playerArena', body.to_json)
+    parse_post_response('/playerArena', body)
   end
 
   def guild(guild_id, include_recent_guild_activity = false, enums = false)
@@ -70,7 +70,7 @@ class SwgohComlink
       enums:
     }
 
-    parse_post_response('/guild', body.to_json)
+    parse_post_response('/guild', body)
   end
 
   def get_guilds(filter_type, name = nil, search_criteria = nil, count = 10, enums = false)
@@ -94,13 +94,13 @@ class SwgohComlink
 
     body_validation(body, validations)
 
-    parse_post_response('/getGuilds', body.to_json)
+    parse_post_response('/getGuilds', body)
   end
 
   def get_events(enums = false)
     body = { enums: }
 
-    parse_post_response('/getEvents', body.to_json)
+    parse_post_response('/getEvents', body)
   end
 
   def get_leaderboard(payload, enums = false)
@@ -122,7 +122,7 @@ class SwgohComlink
 
     body = { payload:, enums: }
 
-    parse_post_response('/getLeaderboard', body.to_json)
+    parse_post_response('/getLeaderboard', body)
   end
 
   def get_guild_leaderboard(leaderboards, count, enums = false)
@@ -165,7 +165,7 @@ class SwgohComlink
       enums:
     }
 
-    parse_post_response('/getGuildLeaderboard', body.to_json)
+    parse_post_response('/getGuildLeaderboard', body)
   end
 
   private
@@ -173,6 +173,8 @@ class SwgohComlink
   def format_player_id_hash(player_id_original)
     # This can accept the 9 digit ally code (ex: 123-456-789)
     # OR it can accept the full playerId (ex: HFuvf-OURK202WASUgpayw)
+    return { allyCode: player_id_original.to_s } if player_id_original.kind_of?(Integer)
+
     player_id = player_id_original.dup
     player_id.gsub!('-', '') if player_id.length == 11
     player_id.length == 9 ? { allyCode: player_id } : { playerID: player_id }
